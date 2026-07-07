@@ -641,7 +641,8 @@ nav .btn .apply:hover{
 
 @media (max-width: 768px) {
   .empower { padding: 40px 20px; }
-  .empower h2 { font-size: 26px; }
+  .empower h2 { font-size: 26px;
+   white-space: normal; }
   .panel-info {
     min-width: 0;
   }
@@ -653,6 +654,7 @@ nav .btn .apply:hover{
     max-width: 100%;
     padding: 6px 12px;
     margin: 0 0 32px;
+    
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -666,6 +668,14 @@ nav .btn .apply:hover{
   .panel { gap: 24px; }
   .panel.active, .panel.reverse.active { flex-direction: column; }
   .panel-img { max-width: 100%; }
+
+   .panel-info h3 {
+        font-size: 20px;
+        white-space: normal;
+        overflow: visible;
+        overflow-wrap: break-word;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -673,6 +683,12 @@ nav .btn .apply:hover{
   .tab { padding: 8px 12px; font-size: 12px; gap: 4px; }
   .tab-icon { width: 14px; height: 14px; }
   .panel-info h3 { font-size: 20px; }
+   .panel-info h3 {
+        font-size: 18px;
+        white-space: normal;
+        overflow: visible;
+        overflow-wrap: break-word;
+    }
 }
 
 /* ============================
