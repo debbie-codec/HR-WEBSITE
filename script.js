@@ -14,6 +14,7 @@ function closeMenu() {
 
 toggle.addEventListener("click", (e) => {
   e.stopPropagation();
+
   if (navMenu.classList.contains("active")) {
     closeMenu();
   } else {
@@ -33,31 +34,52 @@ document.addEventListener("click", (e) => {
   const clickedInsideMenu = navMenu.contains(e.target);
   const clickedToggle = toggle.contains(e.target);
 
-  if (!clickedInsideMenu && !clickedToggle && navMenu.classList.contains("active")) {
+  if (
+    !clickedInsideMenu &&
+    !clickedToggle &&
+    navMenu.classList.contains("active")
+  ) {
     closeMenu();
   }
 });
 
+// Close the menu when the user scrolls or swipes
+function closeMenuOnInteraction() {
+  if (navMenu.classList.contains("active")) {
+    closeMenu();
+  }
+}
+
+window.addEventListener("scroll", closeMenuOnInteraction);
+window.addEventListener("wheel", closeMenuOnInteraction);
+window.addEventListener("touchmove", closeMenuOnInteraction);
+
 // ---------- TABS ----------
-const tabs = document.querySelectorAll('.tab');
+const tabs = document.querySelectorAll(".tab");
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
 
-    tab.classList.add('active');
-    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    tab.classList.add("active");
+    document
+      .getElementById("panel-" + tab.dataset.tab)
+      .classList.add("active");
   });
 });
-
 // ---------- FEATURE CARDS ----------
 const cards = document.querySelectorAll('[data-card]');
 
 cards.forEach(card => {
-  card.addEventListener('click', () => {
+  card.addEventListener('mouseenter', () => {
     cards.forEach(c => c.classList.remove('featured'));
     card.classList.add('featured');
+  });
+
+  card.addEventListener('mouseleave', () => {
+    cards.forEach(c => c.classList.remove('featured'));
+    cards[0].classList.add('featured'); // Makes the first card active again
   });
 });
 
