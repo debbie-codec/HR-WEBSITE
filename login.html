@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="login-style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+</head>
+<body>
+
+  <!-- entire page -->
+  <section class="page">
+
+    <!-- form section -->
+    <div class="form-section">
+      <div class="form-wrapper">
+
+        <div class="logo">
+          <a href="index.html"><img src="images/Frame 9.png" alt="logo"></a>
+        </div>
+
+        <!-- heading -->
+        <div class="head">
+          <h1>Sign In to your account</h1>
+          <p class="subtext login-subtext">Please enter your details to proceed further</p>
+        </div>
+
+        <!-- error banner (hidden by default) -->
+        <div class="login-alert" id="loginAlert">
+          <span class="login-alert-icon">&#9888;&#65039;</span>
+          <span class="login-alert-text" id="loginAlertText">Incorrect Email or Password.</span>
+          <span class="login-alert-close" id="loginAlertClose">&times;</span>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group" id="login-email-group">
+            <label for="loginEmail">Email</label>
+            <div class="input-wrapper">
+              <input type="email" id="loginEmail" placeholder="Enter your email" required>
+              <span class="field-icon">&#9888;&#65039;</span>
+            </div>
+            <span class="error-message" id="login-email-error">This is a required field</span>
+          </div>
+
+          <div class="form-group" id="login-password-group">
+            <label for="loginPassword">Password</label>
+            <div class="input-wrapper password-wrapper">
+              <input type="password" id="loginPassword" placeholder="Enter a password" required>
+              <span class="toggle-password" id="toggleLoginPassword">&#128065;</span>
+            </div>
+            <div class="login-row">
+              <span class="login-hint">Must be at least 8 characters</span>
+              <a href="#" class="forgot-link" id="openForgotPassword">Forgot Password ?</a>
+            </div>
+            <span class="error-message" id="login-password-error">This is a required field</span>
+          </div>
+
+          <button type="submit" class="signup-btn login-btn" id="loginSubmitBtn">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-spinner" id="loginSpinner"></span>
+          </button>
+
+          <p class="subtext login-signup-note">
+            Don't have an account? <a href="signup.html">Sign up</a>
+          </p>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- image section -->
+    <div class="image-section">
+      <img src="images/login-img.png" alt="Sign in" class="img">
+    </div>
+
+  </section>
+
+  <!-- ===== MODALS ===== -->
+  <div class="modal-overlay" id="modalOverlay">
+
+    <!-- Step 1: Forgot Password -->
+    <div class="modal-box" id="forgotPasswordModal">
+      <h2 class="modal-title">Forgot your password?</h2>
+      <p class="modal-subtext">A reset link will be sent to your email address.</p>
+      <div class="form-group" id="forgot-email-group">
+        <input type="email" id="forgotEmailInput" placeholder="Enter Email Address">
+        <span class="error-message" id="forgot-email-error">This is a required field</span>
+      </div>
+      <button class="signup-btn" id="sendResetLinkBtn">
+        <span class="btn-text">Send Reset Link</span>
+        <span class="btn-spinner" id="forgotSpinner"></span>
+      </button>
+      <button type="button" class="modal-secondary-btn" id="backToLoginBtn1">Log In</button>
+    </div>
+
+    <!-- Step 2: Reset link sent -->
+    <div class="modal-box" id="resetSentModal">
+      <h2 class="modal-title">Reset Password</h2>
+      <p class="modal-subtext">A reset link has been sent to your email, <strong id="resetSentEmail"></strong></p>
+      <button type="button" class="signup-btn" id="checkMailBtn">Check mail</button>
+      <p class="modal-note">I remember my password now</p>
+      <button type="button" class="modal-secondary-btn" id="backToLoginBtn2">Log In</button>
+      <p class="modal-resend">If you didn't get the reset email, click the Resend link.<br>
+        <a href="#" id="resendLinkBtn">Resend Link</a>
+      </p>
+    </div>
+
+    <!-- Step 3: New password -->
+    <div class="modal-box" id="newPasswordModal">
+      <h2 class="modal-title">Reset Password</h2>
+      <p class="modal-subtext">Enter a new password for your account</p>
+      <div class="form-group" id="newPassword-group">
+        <label for="newPassword">Password</label>
+        <div class="input-wrapper password-wrapper">
+          <input type="password" id="newPassword" placeholder="Enter password">
+          <span class="toggle-password" id="toggleNewPassword">&#128065;</span>
+        </div>
+        <span class="error-message" id="newPassword-error">Password must be at least 8 characters</span>
+      </div>
+      <div class="form-group" id="confirmPassword-group">
+        <label for="confirmPassword">Confirm password</label>
+        <div class="input-wrapper password-wrapper">
+          <input type="password" id="confirmPassword" placeholder="Re-enter password">
+          <span class="toggle-password" id="toggleConfirmPassword">&#128065;</span>
+        </div>
+        <span class="error-message" id="confirmPassword-error">Passwords do not match</span>
+      </div>
+      <button type="button" class="signup-btn" id="resetPasswordBtn">
+        <span class="btn-text">Reset password</span>
+        <span class="btn-spinner" id="resetSpinner"></span>
+      </button>
+      <button type="button" class="modal-secondary-btn" id="backToLoginBtn3">Log In</button>
+    </div>
+
+    <!-- Step 4: Success -->
+    <div class="modal-box modal-success" id="successModal">
+      <div class="success-check">&#10003;</div>
+      <h2 class="modal-title">Password Reset Successful</h2>
+      <p class="modal-subtext">Make sure to use a password you can remember easily</p>
+      <button type="button" class="signup-btn" id="proceedToLoginBtn">Proceed To Login</button>
+    </div>
+
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
