@@ -23,8 +23,10 @@ nav {
 }
 
 nav .logo img {
+  margin-top: 30px;
   height: 48px;
   width: 157.93px;
+  margin-left: 30px;
 }
 
 nav .nav-menu {
