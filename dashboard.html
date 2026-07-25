@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <title>Dashboard — HRme</title>
+</head>
+<body>
+
+  <div class="dash">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <a href="dashboard.html"><img src="images/Frame 9.png" alt="HRme logo"></a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">▦</span> Dashboard
+        </a>
+        <a href="candidates.html" class="nav-item" data-page="candidates">
+          <span class="nav-icon">👥</span> Candidates
+        </a>
+        <a href="jobs.html" class="nav-item" data-page="jobs">
+          <span class="nav-icon">💼</span> Jobs
+        </a>
+        <a href="calendar.html" class="nav-item" data-page="calendar">
+          <span class="nav-icon">📅</span> Calendar
+        </a>
+        <a href="settings.html" class="nav-item" data-page="settings">
+          <span class="nav-icon">⚙</span> Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <div class="upgrade-icon">🚀</div>
+          <p>Upgrade to <strong>PRO</strong><br>for more features</p>
+          <button class="upgrade-btn">Upgrade Now</button>
+        </div>
+
+        <button class="logout-btn" id="logoutBtn">
+          <span class="nav-icon">⏻</span> Log out
+        </button>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+      <!-- topbar -->
+      <header class="topbar">
+        <h1>Welcome <span id="welcomeName">Joy</span></h1>
+
+        <div class="topbar-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search for anything">
+        </div>
+
+        <div class="topbar-right">
+          <button class="icon-btn" aria-label="Notifications">🔔</button>
+          <div class="topbar-user">
+            <span class="user-avatar" id="topbarAvatar"></span>
+            <span id="topbarName">Gbemi Joy</span>
+            <span class="chevron">⌄</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- stat cards -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-info">
+            <p class="stat-label">Job Openings</p>
+            <p class="stat-value">15</p>
+            <p class="stat-delta up">↑ 12.0%</p>
+          </div>
+          <div class="stat-ring stat-ring--blue" data-percent="60">
+            <svg viewBox="0 0 64 64">
+              <circle class="ring-bg" cx="32" cy="32" r="28"></circle>
+              <circle class="ring-fill" cx="32" cy="32" r="28"></circle>
+            </svg>
+            <span class="ring-label">60%</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-info">
+            <p class="stat-label">Total Applications</p>
+            <p class="stat-value">6537</p>
+            <p class="stat-delta up">↑ 10.0%</p>
+          </div>
+          <div class="stat-ring stat-ring--green" data-percent="60">
+            <svg viewBox="0 0 64 64">
+              <circle class="ring-bg" cx="32" cy="32" r="28"></circle>
+              <circle class="ring-fill" cx="32" cy="32" r="28"></circle>
+            </svg>
+            <span class="ring-label">60%</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-info">
+            <p class="stat-label">Qualified Candidates</p>
+            <p class="stat-value">4215</p>
+            <p class="stat-delta up">↑ 22.0%</p>
+          </div>
+          <div class="stat-ring stat-ring--orange" data-percent="60">
+            <svg viewBox="0 0 64 64">
+              <circle class="ring-bg" cx="32" cy="32" r="28"></circle>
+              <circle class="ring-fill" cx="32" cy="32" r="28"></circle>
+            </svg>
+            <span class="ring-label">60%</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-info">
+            <p class="stat-label">Rejected Candidates</p>
+            <p class="stat-value">2322</p>
+            <p class="stat-delta down">↓ 7.0%</p>
+          </div>
+          <div class="stat-ring stat-ring--red" data-percent="60">
+            <svg viewBox="0 0 64 64">
+              <circle class="ring-bg" cx="32" cy="32" r="28"></circle>
+              <circle class="ring-fill" cx="32" cy="32" r="28"></circle>
+            </svg>
+            <span class="ring-label">60%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- interviews + chart -->
+      <section class="mid-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Upcoming Interviews</h2>
+          </div>
+          <ul class="interview-list" id="interviewList">
+            <!-- injected by dashboard.js -->
+          </ul>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Candidate Per Stage</h2>
+          </div>
+          <div class="bar-chart" id="stageChart">
+            <!-- injected by dashboard.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- candidates table -->
+      <section class="panel candidates-panel">
+        <div class="panel-head">
+          <h2>Candidates</h2>
+          <a href="candidates.html" class="view-more">view more</a>
+        </div>
+
+        <div class="table-tabs">
+          <button class="table-tab active" data-tab="all">All Candidates <span class="tab-count" id="countAll">0</span></button>
+          <button class="table-tab" data-tab="qualified">Qualified Candidates <span class="tab-count" id="countQualified">0</span></button>
+          <button class="table-tab" data-tab="inactive">Inactive Candidates <span class="tab-count" id="countInactive">0</span></button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="candidates-table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="selectAll"></th>
+                <th>Candidate</th>
+                <th>Stage</th>
+                <th>Date Applied</th>
+                <th>Location</th>
+                <th>Job Applied</th>
+                <th>Hiring Team</th>
+                <th>Type</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="candidatesTableBody">
+              <!-- injected by dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
