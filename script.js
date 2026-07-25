@@ -106,12 +106,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("Password");
   const toggleIcon = document.getElementById("togglePassword");
 
+  const modalOverlay = document.getElementById("modalOverlay");
+  const verifyEmailModal = document.getElementById("verifyEmailModal");
+  const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+  const signupBtn = form.querySelector(".signup-btn");
+
   if (passwordInput && toggleIcon) {
     toggleIcon.addEventListener("click", () => {
       const isHidden = passwordInput.type === "password";
       passwordInput.type = isHidden ? "text" : "password";
       toggleIcon.textContent = isHidden ? "🙈" : "👁";
     });
+  }
+
+  function openModal() {
+    if (verifyEmailModal) verifyEmailModal.classList.add("show");
+    if (modalOverlay) modalOverlay.classList.add("show");
+  }
+
+  function closeModal() {
+    if (verifyEmailModal) verifyEmailModal.classList.remove("show");
+    if (modalOverlay) modalOverlay.classList.remove("show");
   }
 
   form.addEventListener("submit", (e) => {
@@ -136,9 +151,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (!hasError) {
-      form.submit();
+    if (hasError) return;
+
+    // simulate a signup request — swap this for a real API call later
+    if (signupBtn) {
+      signupBtn.disabled = true;
+      signupBtn.textContent = "Signing up...";
     }
+
+    setTimeout(() => {
+      if (signupBtn) {
+        signupBtn.disabled = false;
+        signupBtn.textContent = "Sign Up";
+      }
+      openModal();
+    }, 1000);
   });
 
   fields.forEach((id) => {
@@ -150,4 +177,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // clicking the verify button — for now just close, later this
+  // is where you'd resend/confirm verification via a real API
+  if (verifyEmailBtn) {
+    verifyEmailBtn.addEventListener("click", closeModal);
+  }
+
+  // click outside modal to close
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
 });
