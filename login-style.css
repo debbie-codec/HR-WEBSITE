@@ -1,0 +1,229 @@
+/* =====================================================
+   LOGIN PAGE — additive styles only.
+   This file is loaded AFTER style.css on login.html and
+   does not modify any existing rule in style.css.
+===================================================== */
+
+.login-subtext {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.login-btn {
+  position: relative;
+}
+
+.login-signup-note {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+/* ===== ERROR ALERT BANNER ===== */
+.login-alert {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: #dc2626;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.login-alert.show {
+  display: flex;
+}
+
+.login-alert-icon {
+  font-size: 14px;
+}
+
+.login-alert-text {
+  flex: 1;
+}
+
+.login-alert-close {
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+/* ===== PASSWORD ROW (hint + forgot link) ===== */
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.login-hint {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.forgot-link {
+  font-size: 12px;
+  color: #023E87;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== BUTTON LOADING SPINNER ===== */
+.signup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.signup-btn.is-loading {
+  background-color: #a9bcd6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.signup-btn.is-loading:hover {
+  color: white;
+  border: none;
+}
+
+.btn-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.signup-btn.is-loading .btn-spinner {
+  display: inline-block;
+}
+
+.signup-btn.is-loading .btn-text {
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.55);
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-box {
+  display: none;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-box.show {
+  display: block;
+}
+
+.modal-box .form-group {
+  text-align: left;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 8px;
+}
+
+.modal-subtext {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+
+.modal-secondary-btn {
+  width: 100%;
+  background: transparent;
+  color: #023E87;
+  border: 1px solid #023E87;
+  padding: 12px;
+  border-radius: 6px;
+  height: 46px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.modal-secondary-btn:hover {
+  background: #023E87;
+  color: white;
+}
+
+.modal-note {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 14px 0 0;
+}
+
+.modal-resend {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.modal-resend a {
+  color: #023E87;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.modal-resend a:hover {
+  text-decoration: underline;
+}
+
+/* ===== SUCCESS MODAL ===== */
+.modal-success .success-check {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: white;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+@media (max-width: 480px) {
+  .modal-box {
+    padding: 26px 20px;
+  }
+}
