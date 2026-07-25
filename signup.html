@@ -8,6 +8,70 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+
+    <style>
+
+      /* Verify email modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px 32px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.modal h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.modal p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.verify-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1e3a8a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.verify-btn:hover {
+  background: #1e2f6b;
+}
+    </style>
 </head>
 <body>
     <!--  entire page -->
@@ -25,7 +89,7 @@
 <!--  heading -->
   <div class="head">
     <h1>Sign Up to your account</h1>
-  <p class="subtext">Already have an account?<a href=""> Sign In</a></p>
+  <p class="subtext">Already have an account?<a href="login.html"> Sign In</a></p>
   </div>
   
 <form action="" id="signupForm" novalidate>
@@ -93,6 +157,22 @@
     </div>
 </div>
 
+
+
+<!-- Verify email modal -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="verifyEmailModal">
+        <div class="modal-icon">
+          
+          <img src="images/amico.png" alt="" srcset="">
+        </div>
+        <h3>Verify your email address</h3>
+        <p>We sent you an email with a link to verify your email. Check your inbox to verify now</p>
+        <button type="button" class="verify-btn" id="verifyEmailBtn">Verify your email address</button>
+      </div>
+    </div>
+
+   
     </section>
 
     <script src="script.js"></script>
